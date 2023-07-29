@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-// import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../../store/slices/UserSlice";
 import { toggleDrawer } from "../../store/slices/DrawerSlice";
 import {
-  AppBar,
   Avatar,
   Box,
+  Card,
   Chip,
   Container,
   IconButton,
@@ -48,114 +48,97 @@ function Banner() {
   };
 
   return (
-    // <AppBar color="white" position="static">
-    <Container maxWidth="xl">
-      <Toolbar disableGutters>
-        <Box
-          sx={{
-            mr: "10px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-            color="inherit"
-          >
-            {/* <MenuIcon /> */}
-          </IconButton>
-        </Box>
-
-        <Box
-          sx={{
-            flexGrow: 1,
-            display: "flex",
-            alignItems: { xs: "center", md: "flex-start" },
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
+    <Card color="white" style={{ position: "sticky", top: 0, left: 0 }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
           <Box
             sx={{
+              mr: "10px",
               display: "flex",
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <img
-              src={IMAGES.LOGO}
-              style={{
-                height: "40px",
-                objectFit: "contain",
-                display: "block",
-                marginRight: "10px",
-                width: "auto",
-              }}
-              height={40}
-              alt="logo"
-            />
-            <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: "block",
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  fontSize: { xs: "12px", md: "18px" },
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                Welcome
-              </Typography>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
           </Box>
-        </Box>
 
-        <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Profile">
-            <Chip
-              sx={{ width: "90px", justifyContent: "left" }}
-              onClick={handleOpenUserMenu}
-              avatar={
-                <Avatar>
-                  {user?.username && user?.username[0]?.toUpperCase()}
-                </Avatar>
-              }
-              label={user?.username}
-            />
-          </Tooltip>
-
-          <Menu
-            sx={{ mt: "45px", width: "200px" }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              alignItems: { xs: "center", md: "flex-start" },
+              justifyContent: "center",
+              flexDirection: "column",
             }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
           >
-            <MenuItem sx={{ width: "200px" }} onClick={onLogout}>
-              <Typography textAlign="center">Logout</Typography>
-            </MenuItem>
-          </Menu>
-        </Box>
-      </Toolbar>
-    </Container>
-    // </AppBar>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                src={IMAGES.LOGO}
+                style={{
+                  objectFit: "contain",
+                  display: "block",
+                  marginRight: "10px",
+                }}
+                height={40}
+                width={100}
+                objectFit="contain"
+                alt="logo"
+              />
+            </Box>
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Profile">
+              <Chip
+                sx={{ width: "90px", justifyContent: "left" }}
+                onClick={handleOpenUserMenu}
+                avatar={
+                  <Avatar>
+                    {user?.username && user?.username[0]?.toUpperCase()}
+                  </Avatar>
+                }
+                label={user?.username}
+              />
+            </Tooltip>
+
+            <Menu
+              sx={{ mt: "45px", width: "200px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              <MenuItem sx={{ width: "200px" }} onClick={onLogout}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </Card>
   );
 }
 export default Banner;

@@ -9,24 +9,29 @@ import {
   Tooltip,
 } from "@mui/material";
 import { StyledSideBar } from "./StyledSideBar";
-// import { Home, Group } from "@mui/icons-material";
+import { Home, Group } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 import React from "react";
 import { CONSTANTS } from "@/constants/constants";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const SideBar = () => {
+  const pathname = usePathname();
   const user = useSelector((state) => state.user.value);
 
   return (
     <StyledSideBar>
       <List>
         <Tooltip placement="right" title="Home">
-          <Link className={"normalLink"} href={"/"}>
+          <Link
+            className={pathname == "/" ? "normalLink active" : "normalLink"}
+            href={"/"}
+          >
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {/* <Home /> */}
+                  <Home />
                 </ListItemIcon>
                 <ListItemText
                   sx={{
@@ -44,11 +49,16 @@ const SideBar = () => {
         {user?.username === CONSTANTS.ADMIN_USERNAME &&
           user?.password === CONSTANTS.ADMIN_PASSWORD && (
             <Tooltip placement="right" title="User management">
-              <Link className={"normalLink"} href={`/users`}>
+              <Link
+                className={
+                  pathname == "/users" ? "normalLink active" : "normalLink"
+                }
+                href={`/users`}
+              >
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      {/* <Group /> */}
+                      <Group />
                     </ListItemIcon>
                     <ListItemText primary="Users" />
                   </ListItemButton>
