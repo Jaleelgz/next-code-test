@@ -4,9 +4,13 @@ const getAllUsersFromStorage = () => {
   return usersRes ? JSON.parse(usersRes) : [];
 };
 
+// ------------------------------------------------
+
 const setAllUsersToStorage = (users) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
+
+// ------------------------------------------------
 
 const addUserToStorage = (user) => {
   let allUsers = getAllUsersFromStorage();
@@ -15,6 +19,8 @@ const addUserToStorage = (user) => {
 
   setAllUsersToStorage(allUsers);
 };
+
+// ------------------------------------------------
 
 const deleteUserFromStorage = (user) => {
   let allUsers = getAllUsersFromStorage();
@@ -25,6 +31,8 @@ const deleteUserFromStorage = (user) => {
 
   setAllUsersToStorage(newUserList);
 };
+
+// ------------------------------------------------
 
 export {
   getAllUsersFromStorage,

@@ -97,7 +97,6 @@ function Banner() {
                 }}
                 height={40}
                 width={100}
-                objectFit="contain"
                 alt="logo"
               />
             </Box>
