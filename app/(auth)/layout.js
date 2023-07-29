@@ -1,7 +1,5 @@
-import { Inter } from "next/font/google";
+import AuthLayout from "@/components/AuthLayout/AuthLayout";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function AuthLayout({ children }) {
-  return <div style={inter.style}>{children}</div>;
+export default function Layout({ children }) {
+  return <AuthLayout>{children}</AuthLayout>;
 }

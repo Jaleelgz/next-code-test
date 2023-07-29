@@ -6,6 +6,8 @@ import Toast from "./Toast";
 import { useEffect } from "react";
 import { setAllUsers } from "@/store/slices/UsersSlice";
 import { getAllUsersFromStorage } from "@/utils/storageUtils";
+import { setUser } from "@/store/slices/UserSlice";
+import { getCookie } from "cookies-next";
 
 const AppComponent = ({ children }) => {
   const dispatch = useDispatch();
@@ -13,6 +15,12 @@ const AppComponent = ({ children }) => {
 
   useEffect(() => {
     dispatch(setAllUsers(getAllUsersFromStorage()));
+
+    const loggedInUser = getCookie("user");
+
+    if (loggedInUser) {
+      dispatch(setUser(JSON.parse(loggedInUser)));
+    }
   }, []);
 
   return (
