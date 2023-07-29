@@ -27,8 +27,6 @@ function Copyright(props) {
 const AuthLayout = ({ children }) => {
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
-      {/* {loading.visibility && <Loader loadingText={loading.text} />} */}
-
       <Grid
         item
         xs={false}

@@ -29,7 +29,7 @@ const columns = [
     numeric: false,
   },
   {
-    width: 200,
+    width: 230,
     label: "Email",
     dataKey: "email",
   },
@@ -154,9 +154,7 @@ const UsersTable = ({ users, deleteUser, search }) => {
           totalCount={visibleUsers.length}
           components={VirtuosoTableComponents}
           fixedHeaderContent={fixedHeaderContent}
-          itemContent={(_index, row) =>
-            rowContent(_index, row, navigation, deleteUser)
-          }
+          itemContent={(_index, row) => rowContent(_index, row, deleteUser)}
         />
       </Paper>
       <TablePagination

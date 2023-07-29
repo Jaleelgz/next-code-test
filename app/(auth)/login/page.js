@@ -16,6 +16,8 @@ import { setCookie } from "cookies-next";
 import { useRouter } from "next/navigation";
 import { showToast } from "@/store/slices/ToastSlice";
 import { CONSTANTS } from "@/constants/constants";
+import { COLORS } from "@/constants/colors";
+import Loader from "@/common/Loader";
 
 export const metadata = {
   title: "Login",
@@ -44,7 +46,7 @@ const Login = () => {
     router.push("/");
   };
 
-  const onLogin = async (event) => {
+  const onLogin = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -106,12 +108,14 @@ const Login = () => {
         alignItems: "center",
       }}
     >
+      {loading.visibility && <Loader />}
+
       <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
         <LockOutlinedIcon />
       </Avatar>
 
       <Typography component="h1" variant="h5">
-        Sign in
+        Login
       </Typography>
 
       <Box component="form" noValidate onSubmit={onLogin} sx={{ mt: 1 }}>
@@ -168,12 +172,27 @@ const Login = () => {
         />
 
         <Button
+          onClick={() => router.push("/register")}
+          sx={{
+            color: COLORS.GRAY,
+            textTransform: "none",
+            marginLeft: "auto",
+            display: "block",
+          }}
+        >
+          Don&apos;t have an account?{" "}
+          <span style={{ color: COLORS.PRIMARY, fontWeight: "bold" }}>
+            Sign up
+          </span>
+        </Button>
+
+        <Button
           type="submit"
           fullWidth
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          Sign In
+          Login
         </Button>
       </Box>
     </Box>

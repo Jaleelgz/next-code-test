@@ -17,12 +17,13 @@ import { ToastModes } from "../../enum/ToastModes";
 import { deleteUserFromStorage } from "@/utils/storageUtils";
 import { setAllUsers } from "@/store/slices/UsersSlice";
 import UsersTable from "../UsersTable/UsersTable";
+import Loader from "@/common/Loader";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.value);
   const [loading, setLoading] = useState({ visibility: false, text: "" });
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState(users);
   const [search, setSearch] = useState("");
 
   const searchUser = (event) => {
@@ -66,6 +67,7 @@ const UsersPage = () => {
 
     deleteUserFromStorage(userToDelete);
     dispatch(setAllUsers(newUserList));
+    setFilteredUsers(newUserList);
 
     dispatch(showToast({ mode: ToastModes.success, text: "Deleted!" }));
     setLoading({ visibility: false, text: "" });
@@ -73,6 +75,8 @@ const UsersPage = () => {
 
   return (
     <Box>
+      {loading.visibility && <Loader />}
+
       <Box sx={{ maxWidth: "xl", mx: "auto", p: 3 }}>
         <Typography sx={{ fontWeight: "bold" }}>ALL USERS</Typography>
         <Box
