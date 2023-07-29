@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/colors";
 import { createTheme } from "@mui/material/styles";
 import { Inter } from "next/font/google";
 
@@ -9,10 +10,10 @@ const inter = Inter({
 export const muiTheme = createTheme({
   palette: {
     primary: {
-      main: "#783BF3",
+      main: COLORS.PRIMARY,
     },
     background: {
-      default: "#fff",
+      default: COLORS.WHITE,
     },
   },
   typography: {

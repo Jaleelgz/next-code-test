@@ -1,0 +1,16 @@
+export const COLORS = {
+  PRIMARY: "#783BF3",
+  SECONDARY: "#EBA1EB",
+  WHITE: "#fff",
+  BLACK: "#000",
+  GRAY: "#333333",
+  DISABLED_F2: "#f2f2f2",
+  DISABLED_D4: "#d4d4d4",
+  TOAST_SUCCESS: "green",
+  TOAST_INFO: "blue",
+  TOAST_WARNING: "orange",
+  TOAST_ERROR: "red",
+  TEXT_PRIMARY: "#3E4462",
+  TEXT_SECONDARY: "#7E7E7E",
+  BRAND_SECONDARY: "#EDA345",
+};
