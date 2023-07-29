@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
+import HomeLayout from "@/components/HomeLayout/HomeLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function HomeLayout({ children }) {
-  return <div style={inter.style}>{children}</div>;
+export default function Layout({ children }) {
+  return <HomeLayout>{children}</HomeLayout>;
 }
