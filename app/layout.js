@@ -5,11 +5,6 @@ import { ReduxProvider } from "@/common/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Home",
-  description: "Home page of code test app",
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
