@@ -1,11 +1,12 @@
+import UsersPage from "@/components/UsersPage/UsersPage";
 
 export const metadata = {
-    title: "Users",
-    description: "All users",
-  };
+  title: "Users",
+  description: "All users",
+};
 
 const Users = () => {
-  return <div>Users</div>;
+  return <UsersPage />;
 };
 
 export default Users;
